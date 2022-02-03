@@ -63,3 +63,7 @@ MySeq is implemented with [Create React App (CRA)](https://facebook.github.io/cr
 ## Acknowledgements
 
 MySeq incorporates icons adapted from Font Awesome Free under a [CC BY 4.0 license](https://fontawesome.com/license/free).
+
+##修改
+* 检查package.json，修改node版本>=12.
+* 运行npm install

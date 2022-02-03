@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "engines": {
-    "node": "12"
+    "node": ">=12"
   },
   "cacheDirectories": [
     "node_modules"
