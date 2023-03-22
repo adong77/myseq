@@ -1,6 +1,7 @@
 {
   "name": "myseq",
   "version": "0.2.0",
+  "main": "./src/main.js",
   "private": true,
   "engines": {
     "node": ">=12"
@@ -10,6 +11,9 @@
   ],
   "dependencies": {
     "classnames": "^2.2.6",
+    "dotenv": "^16.0.3",
+    "electron-util": "^0.17.2",
+    "express": "^4.18.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "lodash": "^4.17.15",
@@ -27,14 +31,9 @@
     "reactstrap": "^8.4.1",
     "styled-components": "^5.1.0"
   },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=./src/custom-test-env.js",
-    "eject": "react-scripts eject",
-    "lint": "eslint src"
-  },
   "devDependencies": {
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-async-helpers": "^0.9.1",
@@ -43,10 +42,43 @@
     "react-app-rewired": "^2.1.6",
     "worker-loader": "^2.0.0"
   },
+  "scripts": {
+    "start": "electron .",
+    "serve": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=./src/custom-test-env.js",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "pack:mac": "electron-builder --macos --dir",
+    "dist:mac": "electron-builder --macos",
+    "pack:linux": "electron-builder --linux --dir",
+    "dist:linux": "electron-builder --linux",
+    "pack:win": "electron-builder --win --dir",
+    "dist:win": "electron-builder --win",
+    "dev": "set BROWSER=none&& react-app-rewired start",
+    "electron-pack": "build --em.main=build/electron.js"
+  },
   "description": "MySeq is a web-application for interactive analysis of personal genomes.",
+  "build": {
+    "appId": "cn.ligene.myseq",
+    "productName": "myseq",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "category": "Utility"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "resources"
+    }
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mlinderm/myseq.git"
+    "url": "git+https://github.com/adong77/myseq.git"
   },
   "keywords": [
     "MySeq",
@@ -56,13 +88,14 @@
   "author": "Michael Linderman <mlinderman@middlebury.edu>",
   "contributors": [
     "Leo McElroy <lmcelroy@middlebury.edu>",
-    "Laura Chang <hayoungc@middlebury.edu>"
+    "Laura Chang <hayoungc@middlebury.edu>",
+    "Yudong Li <lyd@zjsu.edu.cn>"
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mlinderm/myseq/issues"
+    "url": "https://github.com/adong77/myseq/issues"
   },
-  "homepage": "https://www.ligene.cn/myseq",
+  "homepage": "./",
   "browserslist": [
     ">0.2%",
     "not dead",
